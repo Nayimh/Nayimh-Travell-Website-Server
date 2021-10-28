@@ -41,7 +41,7 @@ run().catch(console.dir);
 
 
 app.get('/', (req, res) => {
-    res.send('my server ready to use.')
+    res.send('my server ready to use nicely.')
 })
 
 app.listen(port, () => {
