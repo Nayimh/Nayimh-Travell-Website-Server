@@ -23,12 +23,13 @@ async function run() {
         await client.connect();
         const database = client.db('TravellData');
         const servicesCollection = database.collection('services');
-        const doc = {
-            name: "nayim",
-            email: "hnaim51@gmail.com"
-        }
-        const result = await servicesCollection.insertOne(doc);
         
+        // GET API
+        app.get('/package', async (req, res) => {
+            const cursor = servicesCollection.find({});
+            const package = await cursor.toArray();
+            res.send(package);
+        })
     }
     finally {
         // await client.close();
