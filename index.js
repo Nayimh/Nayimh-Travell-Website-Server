@@ -30,6 +30,14 @@ async function run() {
             const package = await cursor.toArray();
             res.send(package);
         })
+
+        // POST API
+        app.post('/package', async (req, res) => {
+            const package = req.body;
+            console.log('post hi', package);
+            const result = await servicesCollection.insertOne(package);
+            res.json(result);
+        })
     }
     finally {
         // await client.close();
