@@ -41,13 +41,7 @@ async function run() {
         })
 
 
-        // POST API package
-        app.post('/package', async (req, res) => {
-            const package = req.body;
-            
-            const result = await servicesCollection.insertOne(package);
-            res.json(result);
-        })
+       
 
         // Order post api
         app.post('/orders', async (req, res) => {
@@ -71,6 +65,15 @@ async function run() {
             const cursor = orderCollection.find({});
             const result = await cursor.toArray();
             res.send(result);
+        })
+
+
+         // POST API package
+         app.post('/package', async (req, res) => {
+            const package = req.body;
+            
+            const result = await servicesCollection.insertOne(package);
+            res.json(result);
         })
 
     }
