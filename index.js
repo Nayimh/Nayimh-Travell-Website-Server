@@ -56,17 +56,18 @@ async function run() {
             res.json(result)
         })
 
-        // Order get api
-        app.get('/orders/:email', async (req, res) => {
+        
+         // Order get api
+        app.get("/orders/:email", async (req, res) => {
             const email = req.params.email;
             const cursor = orderCollection.find({});
             const orders = await cursor.toArray();
             const userOrder = orders.filter((mail) => mail.email === email);
-            res.send(userOrder)
-        })
+            res.send(userOrder);
+          });
 
         // Get All Order
-        app.post('/allorders', async (req, res) => {
+        app.get('/allorders', async (req, res) => {
             const cursor = orderCollection.find({});
             const result = await cursor.toArray();
             res.send(result);
