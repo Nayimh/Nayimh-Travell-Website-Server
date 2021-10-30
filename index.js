@@ -67,6 +67,14 @@ async function run() {
             res.send(result);
         })
 
+        // Delete Specific Tour API
+    app.delete("/orders/:id", async (req, res) => {
+        const id = req.params.id;
+        const query = { _id: ObjectId(id) };
+        const order = await orderCollection.deleteOne(query);
+        res.json(order);
+      });
+  
 
          // POST API package
          app.post('/package', async (req, res) => {
